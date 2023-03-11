@@ -1,4 +1,5 @@
 import datetime
+import os
 
 import pandas as pd
 from rdflib import BNode, Graph, Literal, Namespace, URIRef
@@ -86,7 +87,6 @@ def add_measures(cube: Graph) -> list[URIRef]:
 
     properties = [
         (RDF.type, RDFS.Property),
-        (RDF.type, QB.DataStructureDefinition),
         (RDF.type, QB.MeasureProperty),
         (RDFS.label, Literal("Počet poskytovatelů péče", lang="cs")),
         (RDFS.label, Literal("Number of care providers", lang="en")),
@@ -172,6 +172,7 @@ def create_observations(cube: Graph, dataset: URIRef, data: pd.DataFrame) -> Non
         resource = NSR["observation-" + str(index).zfill(4)]
         cube.add((resource, RDF.type, QB.Observation))
         cube.add((resource, QB.dataSet, dataset))
+        cube.add((resource, QB.dataSet, dataset))
         cube.add((resource, NS.county, NSR[serialize_to_string(county)]))
         cube.add((resource, NS.region, NSR[serialize_to_string(region)]))
         cube.add(
@@ -196,6 +197,8 @@ def main():
     data = load_data()
     print(f"Dataset size: {len(data)}")
     cube = create_datacube(data)
+    if not os.path.exists("out"):
+        os.makedirs("out")
     with open("out/care_providers.ttl", "wb") as f:
         cube.serialize(f, "ttl")
         print(f"Generated data cube into {f.name}")
