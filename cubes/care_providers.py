@@ -16,7 +16,9 @@ SDMX_CON = Namespace("http://purl.org/linked-data/sdmx/2009/concept#")
 SDMX_MES = Namespace("http://purl.org/linked-data/sdmx/2009/measure#")
 
 COUNTY = "Okres"
+COUNTY_CODE = "OkresCode"
 REGION = "Kraj"
+REGION_CODE = "KrajCode"
 FIELD_OF_CARE = "OborPece"
 
 
@@ -34,7 +36,7 @@ def create_datacube(data: pd.DataFrame) -> Graph:
 
     create_resources(cube, data)
     create_observations(cube, dataset, data.groupby(
-        [COUNTY, REGION, FIELD_OF_CARE]))
+        [COUNTY_CODE, REGION_CODE, FIELD_OF_CARE]))
 
     return cube
 
@@ -99,7 +101,7 @@ def add_measures(cube: Graph) -> list[URIRef]:
     return [number_of_care_providers]
 
 
-def create_structure(cube, dimensions, measures) -> URIRef:
+def create_structure(cube: Graph, dimensions: list[URIRef], measures: list[URIRef]) -> URIRef:
     structure = NS.structure
     cube.add((structure, RDF.type, QB.DataStructureDefinition))
 
@@ -149,12 +151,12 @@ def serialize_to_string(obj: any) -> str:
 
 def create_resources(cube: Graph, data: pd.DataFrame) -> None:
     for _, row in data.iterrows():
-        county = serialize_to_string(row[COUNTY])
+        county = serialize_to_string(row[COUNTY_CODE])
         cube.add((NSR[county], RDF.type, NS.county))
         cube.add((NSR[county], SKOS.prefLabel,
                  Literal(str(row[COUNTY]), lang="cs")))
 
-        region = serialize_to_string(row[REGION])
+        region = serialize_to_string(row[REGION_CODE])
         cube.add((NSR[region], RDF.type, NS.region))
         cube.add((NSR[region], SKOS.prefLabel,
                  Literal(str(row[REGION]), lang="cs")))
@@ -187,6 +189,7 @@ def create_observations(cube: Graph, dataset: URIRef, data: pd.DataFrame) -> Non
 
 def get_cube():
     cube = create_datacube(load_data())
+    setattr(cube, "name", "Care providers")
     cube.bind("qb", QB)
     cube.bind("skos", SKOS)
     return cube

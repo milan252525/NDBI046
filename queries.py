@@ -1,6 +1,7 @@
 import rdflib
 
-from cubes.care_providers import get_cube
+import cubes.care_providers as care_providers
+import cubes.population as population
 
 unique_dataset = """
 ASK {
@@ -271,7 +272,7 @@ checks = {
     "Dimensions have range": dimensions_have_range,
     "Concept dimensions have code lists": code_lists,
     "Only attributes may be optional": attr_opt,
-    #"Slice Keys must be declared":slice_keys, # this one throws error, but we dont use slices anyway
+    # "Slice Keys must be declared":slice_keys, # this one throws error, but we dont use slices anyway
     "Slice Keys consistent with DSD": slice_consistent,
     "Unique slice structure": unique_slice,
     "Slice dimensions complete": slice_dim,
@@ -289,23 +290,29 @@ checks = {
     "Codes from hierarchy (inverse)": codes_from_hierarchy_inv
 }
 
+
 def run_qb_check(cube, checks):
     for check, query in checks.items():
         result = cube.query(query)
         print(f"{bool(result)} {check}")
 
-def main():
-    cube: rdflib.Graph = get_cube()
-    # required bindings
-    cube.bind("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
-    cube.bind("rdfs", "http://www.w3.org/2000/01/rdf-schema#")
-    cube.bind("skos", "http://www.w3.org/2004/02/skos/core#")
-    cube.bind("qb", "http://purl.org/linked-data/cube#")
-    cube.bind("xsd", "http://www.w3.org/2001/XMLSchema#")
-    cube.bind("owl", "http://www.w3.org/2002/07/owl#")
 
-    print("True = constraint is broken")
-    run_qb_check(cube, checks)
+def main():
+    cubes = [care_providers.get_cube(), population.get_cube()]
+    for cube in cubes:
+        print(cube.name.upper())
+        
+        # required bindings
+        cube.bind("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+        cube.bind("rdfs", "http://www.w3.org/2000/01/rdf-schema#")
+        cube.bind("skos", "http://www.w3.org/2004/02/skos/core#")
+        cube.bind("qb", "http://purl.org/linked-data/cube#")
+        cube.bind("xsd", "http://www.w3.org/2001/XMLSchema#")
+        cube.bind("owl", "http://www.w3.org/2002/07/owl#")
+
+        print("True = constraint is broken")
+        run_qb_check(cube, checks)
+        print()
 
 
 if __name__ == "__main__":
