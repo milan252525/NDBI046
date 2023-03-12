@@ -5,7 +5,8 @@ import pandas as pd
 from rdflib import BNode, Graph, Literal, Namespace, URIRef
 from rdflib.namespace import DCTERMS, QB, RDF, SKOS, XSD
 
-SOURCE = "data/130141-22data2021.csv"
+SOURCE_POPULATION = "data/130141-22data2021.csv"
+SOURCE_CARE_PROVIDERS = "data/narodni-registr-poskytovatelu-zdravotnich-sluzeb.csv"
 COUNTY_CODELIST = "data/číselník-okresů-vazba-101-nadřízený.csv"
 
 NS = Namespace("https://milan252525.github.io/ontology#")
@@ -21,12 +22,15 @@ REGION = "Kraj"
 
 
 def load_data() -> pd.DataFrame:
-    return pd.read_csv(SOURCE)
+    return pd.read_csv(SOURCE_POPULATION)
+
+
+def load_care_providers() -> pd.DataFrame:
+    return pd.read_csv(SOURCE_CARE_PROVIDERS, low_memory=False)
 
 
 def load_codelist() -> pd.DataFrame:
     return pd.read_csv(COUNTY_CODELIST)
-
 
 def create_datacube(data: pd.DataFrame, codelist: pd.DataFrame) -> Graph:
     cube = Graph()
@@ -36,7 +40,7 @@ def create_datacube(data: pd.DataFrame, codelist: pd.DataFrame) -> Graph:
     dataset = create_dataset(cube, structure)
 
     # filter only mean population in counties
-    data = data[(data["vuk"] == "DEM0004") & ((data["vuzemi_cis"] == 101))]
+    data = data[(data["vuk"] == "DEM0004") & (data["vuzemi_cis"] == 101)]
 
     create_resources(cube, data, codelist)
     create_observations(cube, dataset, data, codelist)
@@ -146,13 +150,20 @@ def create_resources(cube: Graph, data: pd.DataFrame, codelist: pd.DataFrame) ->
         cube.add((NSR[code], SKOS.prefLabel,
                  Literal(row.vuzemi_txt, lang="cs")))
 
-        # xregion = serialize_to_string(row[REGION])
-        # cube.add((NSR[region], RDF.type, NS.region))
-        # cube.add((NSR[region], SKOS.prefLabel,
-        #          Literal(str(row[REGION]), lang="cs")))
+    regions = load_care_providers()
+    for _, row in regions[["KrajCode", "Kraj"]].drop_duplicates().dropna().iterrows():
+        region = row["KrajCode"]
+        cube.add((NSR[region], RDF.type, NS.region))
+        cube.add((NSR[region], SKOS.prefLabel,
+                 Literal(row["Kraj"], lang="cs")))
 
 
 def create_observations(cube: Graph, dataset: URIRef, data: pd.DataFrame, codelist: pd.DataFrame) -> None:
+    regions = load_care_providers()
+    map = dict()
+    for _, row in regions[["KrajCode", "OkresCode"]].drop_duplicates().dropna().iterrows():
+        map[row["OkresCode"]] = row["KrajCode"]
+        
     for index, row in data.iterrows():
         resource = NSR["observation-" + str(index).zfill(4)]
         cube.add((resource, RDF.type, QB.Observation))
@@ -161,7 +172,7 @@ def create_observations(cube: Graph, dataset: URIRef, data: pd.DataFrame, codeli
 
         county = translate_county_code_name(row.vuzemi_kod, codelist)
         cube.add((resource, NS.county, NSR[county]))
-        cube.add((resource, NS.region, NSR["_"]))
+        cube.add((resource, NS.region, NSR[map[county]]))
 
         cube.add((resource, NS.mean_population, Literal(
             row.hodnota, datatype=XSD.integer)))

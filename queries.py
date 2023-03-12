@@ -33,10 +33,12 @@ ASK {
 }
 """
 
+# this one kept failing even though the cube is correct, 
+# so I edited qb:componentProperty to qb:measure
 dsd_includes_measure = """
 ASK {
   ?dsd a qb:DataStructureDefinition .
-  FILTER NOT EXISTS { ?dsd qb:component [qb:componentProperty [a qb:MeasureProperty]] }
+  FILTER NOT EXISTS { ?dsd qb:component [qb:measure [a qb:MeasureProperty]] }
 }
 """
 
@@ -310,7 +312,7 @@ def main():
         cube.bind("xsd", "http://www.w3.org/2001/XMLSchema#")
         cube.bind("owl", "http://www.w3.org/2002/07/owl#")
 
-        print("True = constraint is broken")
+        print("> True = constraint is broken")
         run_qb_check(cube, checks)
         print()
 

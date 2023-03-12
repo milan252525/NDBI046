@@ -5,7 +5,7 @@ import pandas as pd
 from rdflib import BNode, Graph, Literal, Namespace, URIRef
 from rdflib.namespace import DCTERMS, QB, RDF, SKOS, XSD
 
-SOURCE = "data/narodni-registr-poskytovatelu-zdravotnich-sluzeb.csv"
+SOURCE_CARE_PROVIDERS = "data/narodni-registr-poskytovatelu-zdravotnich-sluzeb.csv"
 
 NS = Namespace("https://milan252525.github.io/ontology#")
 NSR = Namespace("https://milan252525.github.io/resources/")
@@ -24,7 +24,7 @@ FIELD_OF_CARE = "OborPece"
 
 def load_data() -> pd.DataFrame:
     # low_memory because the data has variable data types in columns
-    return pd.read_csv(SOURCE, low_memory=False)
+    return pd.read_csv(SOURCE_CARE_PROVIDERS, low_memory=False)
 
 
 def create_datacube(data: pd.DataFrame) -> Graph:
@@ -146,27 +146,27 @@ def create_dataset(cube: Graph, structure: URIRef) -> URIRef:
 
 
 def serialize_to_string(obj: any) -> str:
-    return str(obj).replace(" ", "_")
+    return str(obj).strip().replace(", ", ",").replace(" ", "_").lower()
 
 
 def create_resources(cube: Graph, data: pd.DataFrame) -> None:
-    for _, row in data.iterrows():
+    for _, row in data[[COUNTY, COUNTY_CODE]].drop_duplicates().dropna().iterrows():
         county = serialize_to_string(row[COUNTY_CODE])
         cube.add((NSR[county], RDF.type, NS.county))
         cube.add((NSR[county], SKOS.prefLabel,
                  Literal(str(row[COUNTY]), lang="cs")))
 
+    for _, row in data[[REGION, REGION_CODE]].drop_duplicates().dropna().iterrows():
         region = serialize_to_string(row[REGION_CODE])
         cube.add((NSR[region], RDF.type, NS.region))
         cube.add((NSR[region], SKOS.prefLabel,
                  Literal(str(row[REGION]), lang="cs")))
 
+    for _, row in data[[FIELD_OF_CARE]].drop_duplicates().dropna().iterrows():
         field = serialize_to_string(row[FIELD_OF_CARE])
         cube.add((NSR[field], RDF.type, NS.field_of_care))
-        cube.add(
-            (NSR[field], SKOS.prefLabel, Literal(
-                str(row[FIELD_OF_CARE]), lang="cs"))
-        )
+        cube.add((NSR[field], SKOS.prefLabel, Literal(
+            str(row[FIELD_OF_CARE]), lang="cs")))
 
 
 def create_observations(cube: Graph, dataset: URIRef, data: pd.DataFrame) -> None:
