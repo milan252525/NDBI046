@@ -1,9 +1,6 @@
-import rdflib
+from cubes import care_providers, population
 
-import cubes.care_providers as care_providers
-import cubes.population as population
-
-unique_dataset = """
+UNIQUE_DATASET = """
 ASK {
   {
     # Check observation has a data set
@@ -18,13 +15,13 @@ ASK {
 }
 """
 
-unique_dsd = """
+UNIQUE_DSD = """
 ASK {
   {
     # Check dataset has a dsd
     ?dataset a qb:DataSet .
     FILTER NOT EXISTS { ?dataset qb:structure ?dsd . }
-  } UNION { 
+  } UNION {
     # Check has just one dsd
     ?dataset a qb:DataSet ;
        qb:structure ?dsd1, ?dsd2 .
@@ -33,23 +30,23 @@ ASK {
 }
 """
 
-# this one kept failing even though the cube is correct, 
+# this one kept failing even though the cube is correct,
 # so I edited qb:componentProperty to qb:measure
-dsd_includes_measure = """
+DSD_INCLUDES_MEASURE = """
 ASK {
   ?dsd a qb:DataStructureDefinition .
   FILTER NOT EXISTS { ?dsd qb:component [qb:measure [a qb:MeasureProperty]] }
 }
 """
 
-dimensions_have_range = """
+DIMENSIONS_HAVE_RANGE = """
 ASK {
   ?dim a qb:DimensionProperty .
   FILTER NOT EXISTS { ?dim rdfs:range [] }
 }
 """
 
-code_lists = """
+CODE_LISTS = """
 ASK {
   ?dim a qb:DimensionProperty ;
        rdfs:range skos:Concept .
@@ -57,7 +54,7 @@ ASK {
 }
 """
 
-attr_opt = """
+ATTR_OPT = """
 ASK {
   ?dsd qb:component ?componentSpec .
   ?componentSpec qb:componentRequired "false"^^xsd:boolean ;
@@ -66,14 +63,14 @@ ASK {
 }
 """
 
-slice_keys = """
+SLICE_KEYS = """
 ASK {
     ?sliceKey a qb:SliceKey .
     FILTER NOT EXISTS { [a qb:DataStructureDefinition] qb:sliceKey ?sliceKey }
 }
 """
 
-slice_consistent = """
+SLICE_CONSISTENT = """
 ASK {
   ?slicekey a qb:SliceKey;
       qb:componentProperty ?prop .
@@ -82,7 +79,7 @@ ASK {
 }
 """
 
-unique_slice = """
+UNIQUE_SLICE = """
 ASK {
   {
     # Slice has a key
@@ -97,14 +94,14 @@ ASK {
 }
 """
 
-slice_dim = """
+SLICE_DIM = """
 ASK {
   ?slice qb:sliceStructure [qb:componentProperty ?dim] .
   FILTER NOT EXISTS { ?slice ?dim [] }
 }
 """
 
-all_dim = """
+ALL_DIM = """
 ASK {
     ?obs qb:dataSet/qb:structure/qb:component/qb:componentProperty ?dim .
     ?dim a qb:DimensionProperty;
@@ -112,7 +109,7 @@ ASK {
 }
 """
 
-no_dup_obs = """
+NO_DUP_OBS = """
 ASK {
   FILTER( ?allEqual )
   {
@@ -131,7 +128,7 @@ ASK {
 }
 """
 
-required_att = """
+REQUIRED_ATT = """
 ASK {
     ?obs qb:dataSet/qb:structure/qb:component ?component .
     ?component qb:componentRequired "true"^^xsd:boolean ;
@@ -140,7 +137,7 @@ ASK {
 }
 """
 
-all_measures = """
+ALL_MEASURES = """
 ASK {
     # Observation in a non-measureType cube
     ?obs qb:dataSet/qb:structure ?dsd .
@@ -153,7 +150,7 @@ ASK {
 }
 """
 
-measure_dim_consistent = """
+MEASURE_DIM_CONSISTENT = """
 ASK {
     # Observation in a measureType-cube
     ?obs qb:dataSet/qb:structure ?dsd ;
@@ -164,7 +161,7 @@ ASK {
 }
 """
 
-single_measure = """
+SINGLE_MEASURE = """
 ASK {
     # Observation with measureType
     ?obs qb:dataSet/qb:structure ?dsd ;
@@ -179,10 +176,10 @@ ASK {
 }
 """
 
-all_measures_present_in_measures = """
+ALL_MEASURES_PRESENT_IN_MEASURES = """
 ASK {
   {
-      # Count number of other measures found at each point 
+      # Count number of other measures found at each point
       SELECT ?numMeasures (COUNT(?obs2) AS ?count) WHERE {
           {
               # Find the DSDs and check how many measures they have
@@ -191,31 +188,31 @@ ASK {
                   ?m a qb:MeasureProperty .
               } GROUP BY ?dsd
           }
-        
+
           # Observation in measureType cube
           ?obs1 qb:dataSet/qb:structure ?dsd;
                 qb:dataSet ?dataset ;
                 qb:measureType ?m1 .
-    
+
           # Other observation at same dimension value
           ?obs2 qb:dataSet ?dataset ;
                 qb:measureType ?m2 .
-          FILTER NOT EXISTS { 
+          FILTER NOT EXISTS {
               ?dsd qb:component/qb:componentProperty ?dim .
               FILTER (?dim != qb:measureType)
               ?dim a qb:DimensionProperty .
-              ?obs1 ?dim ?v1 . 
-              ?obs2 ?dim ?v2. 
+              ?obs1 ?dim ?v1 .
+              ?obs2 ?dim ?v2.
               FILTER (?v1 != ?v2)
           }
-          
+
       } GROUP BY ?obs1 ?numMeasures
         HAVING (?count != ?numMeasures)
   }
 }
 """
 
-consistent_dataset_links = """
+CONSISTENT_DATASET_LINKS = """
 ASK {
     ?dataset qb:slice       ?slice .
     ?slice   qb:observation ?obs .
@@ -223,7 +220,7 @@ ASK {
 }
 """
 
-codes_from_code_lists_1 = """
+CODES_FROM_CODE_LISTS_1 = """
 ASK {
     ?obs qb:dataSet/qb:structure/qb:component/qb:componentProperty ?dim .
     ?dim a qb:DimensionProperty ;
@@ -234,7 +231,7 @@ ASK {
 }
 """
 
-codes_from_code_lists_2 = """
+CODES_FROM_CODE_LISTS_2 = """
 ASK {
     ?obs qb:dataSet/qb:structure/qb:component/qb:componentProperty ?dim .
     ?dim a qb:DimensionProperty ;
@@ -245,7 +242,7 @@ ASK {
 }
 """
 
-codes_from_hierarchy = """
+CODES_FROM_HIERARCHY = """
 ASK {
     ?obs qb:dataSet/qb:structure/qb:component/qb:componentProperty ?dim .
     ?dim a qb:DimensionProperty ;
@@ -256,7 +253,7 @@ ASK {
 }
 """
 
-codes_from_hierarchy_inv = """
+CODES_FROM_HIERARCHY_INVERSE = """
 ASK {
     ?obs qb:dataSet/qb:structure/qb:component/qb:componentProperty ?dim .
     ?dim a qb:DimensionProperty ;
@@ -267,29 +264,29 @@ ASK {
 }
 """
 
-checks = {
-    "Unique DataSet": unique_dataset,
-    "Unique DSD": unique_dsd,
-    "DSD includes measure": dsd_includes_measure,
-    "Dimensions have range": dimensions_have_range,
-    "Concept dimensions have code lists": code_lists,
-    "Only attributes may be optional": attr_opt,
-    # "Slice Keys must be declared":slice_keys, # this one throws error, but we dont use slices anyway
-    "Slice Keys consistent with DSD": slice_consistent,
-    "Unique slice structure": unique_slice,
-    "Slice dimensions complete": slice_dim,
-    "All dimensions required": all_dim,
-    "No duplicate observations": no_dup_obs,
-    "Required attributes": required_att,
-    "All measures present": all_measures,
-    "Measure dimension consistent": measure_dim_consistent,
-    "Single measure on measure dimension observation": single_measure,
-    "All measures present in measures dimension cube": all_measures_present_in_measures,
-    "Consistent data set links": consistent_dataset_links,
-    "Codes from code list 1": codes_from_code_lists_1,
-    "Codes from code list 2": codes_from_code_lists_2,
-    "Codes from hierarchy": codes_from_hierarchy,
-    "Codes from hierarchy (inverse)": codes_from_hierarchy_inv
+queries = {
+    "Unique DataSet": UNIQUE_DATASET,
+    "Unique DSD": UNIQUE_DSD,
+    "DSD includes measure": DSD_INCLUDES_MEASURE,
+    "Dimensions have range": DIMENSIONS_HAVE_RANGE,
+    "Concept dimensions have code lists": CODE_LISTS,
+    "Only attributes may be optional": ATTR_OPT,
+    # "Slice Keys must be declared":SLICE_KEYS, # throws error, but we dont use slices anyway
+    "Slice Keys consistent with DSD": SLICE_CONSISTENT,
+    "Unique slice structure": UNIQUE_SLICE,
+    "Slice dimensions complete": SLICE_DIM,
+    "All dimensions required": ALL_DIM,
+    "No duplicate observations": NO_DUP_OBS,
+    "Required attributes": REQUIRED_ATT,
+    "All measures present": ALL_MEASURES,
+    "Measure dimension consistent": MEASURE_DIM_CONSISTENT,
+    "Single measure on measure dimension observation": SINGLE_MEASURE,
+    "All measures present in measures dimension cube": ALL_MEASURES_PRESENT_IN_MEASURES,
+    "Consistent data set links": CONSISTENT_DATASET_LINKS,
+    "Codes from code list 1": CODES_FROM_CODE_LISTS_1,
+    "Codes from code list 2": CODES_FROM_CODE_LISTS_2,
+    "Codes from hierarchy": CODES_FROM_HIERARCHY,
+    "Codes from hierarchy (inverse)": CODES_FROM_HIERARCHY_INVERSE,
 }
 
 
@@ -303,7 +300,7 @@ def main():
     cubes = [care_providers.get_cube(), population.get_cube()]
     for cube in cubes:
         print(cube.name.upper())
-        
+
         # required bindings
         cube.bind("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
         cube.bind("rdfs", "http://www.w3.org/2000/01/rdf-schema#")
@@ -313,7 +310,7 @@ def main():
         cube.bind("owl", "http://www.w3.org/2002/07/owl#")
 
         print("> True = constraint is broken")
-        run_qb_check(cube, checks)
+        run_qb_check(cube, queries)
         print()
 
 

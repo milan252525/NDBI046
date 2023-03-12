@@ -35,8 +35,9 @@ def create_datacube(data: pd.DataFrame) -> Graph:
     dataset = create_dataset(cube, structure)
 
     create_resources(cube, data)
-    create_observations(cube, dataset, data.groupby(
-        [COUNTY_CODE, REGION_CODE, FIELD_OF_CARE]))
+    create_observations(
+        cube, dataset, data.groupby([COUNTY_CODE, REGION_CODE, FIELD_OF_CARE])
+    )
 
     return cube
 
@@ -52,8 +53,8 @@ def add_dimensions(cube: Graph) -> list[URIRef]:
         (RDFS.subPropertyOf, SDMX_DIM.refArea),
         (QB.concept, SDMX_CON.refArea),
     ]
-    for p in properties:
-        cube.add((county, *p))
+    for prop in properties:
+        cube.add((county, *prop))
 
     region = NS.region
     properties = [
@@ -65,8 +66,8 @@ def add_dimensions(cube: Graph) -> list[URIRef]:
         (RDFS.subPropertyOf, SDMX_DIM.refArea),
         (QB.concept, SDMX_CON.refArea),
     ]
-    for p in properties:
-        cube.add((region, *p))
+    for prop in properties:
+        cube.add((region, *prop))
 
     field_of_care = NS.field_of_care
     properties = [
@@ -78,8 +79,8 @@ def add_dimensions(cube: Graph) -> list[URIRef]:
         (RDFS.subPropertyOf, SDMX_DIM.coverageSector),
         (QB.concept, SDMX_CON.coverageSector),
     ]
-    for p in properties:
-        cube.add((field_of_care, *p))
+    for prop in properties:
+        cube.add((field_of_care, *prop))
 
     return [county, region, field_of_care]
 
@@ -95,13 +96,15 @@ def add_measures(cube: Graph) -> list[URIRef]:
         (RDFS.range, XSD.integer),
         (RDFS.subPropertyOf, SDMX_MES.obsValue),
     ]
-    for p in properties:
-        cube.add((number_of_care_providers, *p))
+    for prop in properties:
+        cube.add((number_of_care_providers, *prop))
 
     return [number_of_care_providers]
 
 
-def create_structure(cube: Graph, dimensions: list[URIRef], measures: list[URIRef]) -> URIRef:
+def create_structure(
+    cube: Graph, dimensions: list[URIRef], measures: list[URIRef]
+) -> URIRef:
     structure = NS.structure
     cube.add((structure, RDF.type, QB.DataStructureDefinition))
 
@@ -132,8 +135,7 @@ def create_dataset(cube: Graph, structure: URIRef) -> URIRef:
     cube.add((dataset, DCTERMS.issued, Literal(issued, datatype=XSD.date)))
     cube.add((dataset, DCTERMS.modified, Literal(curr_date, datatype=XSD.date)))
 
-    cube.add((dataset, DCTERMS.publisher, Literal(
-        "https://github.com/milan252525/")))
+    cube.add((dataset, DCTERMS.publisher, Literal("https://github.com/milan252525/")))
     cube.add(
         (
             dataset,
@@ -153,20 +155,19 @@ def create_resources(cube: Graph, data: pd.DataFrame) -> None:
     for _, row in data[[COUNTY, COUNTY_CODE]].drop_duplicates().dropna().iterrows():
         county = serialize_to_string(row[COUNTY_CODE])
         cube.add((NSR[county], RDF.type, NS.county))
-        cube.add((NSR[county], SKOS.prefLabel,
-                 Literal(str(row[COUNTY]), lang="cs")))
+        cube.add((NSR[county], SKOS.prefLabel, Literal(str(row[COUNTY]), lang="cs")))
 
     for _, row in data[[REGION, REGION_CODE]].drop_duplicates().dropna().iterrows():
         region = serialize_to_string(row[REGION_CODE])
         cube.add((NSR[region], RDF.type, NS.region))
-        cube.add((NSR[region], SKOS.prefLabel,
-                 Literal(str(row[REGION]), lang="cs")))
+        cube.add((NSR[region], SKOS.prefLabel, Literal(str(row[REGION]), lang="cs")))
 
     for _, row in data[[FIELD_OF_CARE]].drop_duplicates().dropna().iterrows():
         field = serialize_to_string(row[FIELD_OF_CARE])
         cube.add((NSR[field], RDF.type, NS.field_of_care))
-        cube.add((NSR[field], SKOS.prefLabel, Literal(
-            str(row[FIELD_OF_CARE]), lang="cs")))
+        cube.add(
+            (NSR[field], SKOS.prefLabel, Literal(str(row[FIELD_OF_CARE]), lang="cs"))
+        )
 
 
 def create_observations(cube: Graph, dataset: URIRef, data: pd.DataFrame) -> None:
@@ -177,13 +178,13 @@ def create_observations(cube: Graph, dataset: URIRef, data: pd.DataFrame) -> Non
         cube.add((resource, QB.dataSet, dataset))
         cube.add((resource, NS.county, NSR[serialize_to_string(county)]))
         cube.add((resource, NS.region, NSR[serialize_to_string(region)]))
+        cube.add((resource, NS.field_of_care, NSR[serialize_to_string(field_of_care)]))
         cube.add(
-            (resource, NS.field_of_care,
-             NSR[serialize_to_string(field_of_care)])
-        )
-        cube.add(
-            (resource, NS.number_of_care_providers,
-             Literal(len(group), datatype=XSD.integer))
+            (
+                resource,
+                NS.number_of_care_providers,
+                Literal(len(group), datatype=XSD.integer),
+            )
         )
 
 
@@ -196,15 +197,15 @@ def get_cube():
 
 
 def main():
-    print(f"Generating Care providers data cube")
+    print("Generating Care providers data cube")
     data = load_data()
     print(f"Dataset size: {len(data)}")
     cube = create_datacube(data)
     if not os.path.exists("out"):
         os.makedirs("out")
-    with open("out/care_providers.ttl", "wb") as f:
-        cube.serialize(f, "ttl")
-        print(f"Generated data cube into {f.name}")
+    with open("out/care_providers.ttl", "wb") as file:
+        cube.serialize(file, "ttl")
+        print(f"Generated data cube into {file.name}")
 
 
 if __name__ == "__main__":

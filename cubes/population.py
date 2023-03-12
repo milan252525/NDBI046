@@ -32,6 +32,7 @@ def load_care_providers() -> pd.DataFrame:
 def load_codelist() -> pd.DataFrame:
     return pd.read_csv(COUNTY_CODELIST)
 
+
 def create_datacube(data: pd.DataFrame, codelist: pd.DataFrame) -> Graph:
     cube = Graph()
     dimensions = add_dimensions(cube)
@@ -59,8 +60,8 @@ def add_dimensions(cube: Graph) -> list[URIRef]:
         (RDFS.subPropertyOf, SDMX_DIM.refArea),
         (QB.concept, SDMX_CON.refArea),
     ]
-    for p in properties:
-        cube.add((county, *p))
+    for prop in properties:
+        cube.add((county, *prop))
 
     region = NS.region
     properties = [
@@ -72,8 +73,8 @@ def add_dimensions(cube: Graph) -> list[URIRef]:
         (RDFS.subPropertyOf, SDMX_DIM.refArea),
         (QB.concept, SDMX_CON.refArea),
     ]
-    for p in properties:
-        cube.add((region, *p))
+    for prop in properties:
+        cube.add((region, *prop))
 
     return [county, region]
 
@@ -89,13 +90,15 @@ def add_measures(cube: Graph) -> list[URIRef]:
         (RDFS.range, XSD.integer),
         (RDFS.subPropertyOf, SDMX_MES.obsValue),
     ]
-    for p in properties:
-        cube.add((mean_population, *p))
+    for prop in properties:
+        cube.add((mean_population, *prop))
 
     return [mean_population]
 
 
-def create_structure(cube: Graph, dimensions: list[URIRef], measures: list[URIRef]) -> URIRef:
+def create_structure(
+    cube: Graph, dimensions: list[URIRef], measures: list[URIRef]
+) -> URIRef:
     structure = NS.structure
     cube.add((structure, RDF.type, QB.DataStructureDefinition))
 
@@ -116,9 +119,7 @@ def create_dataset(cube: Graph, structure: URIRef) -> URIRef:
     dataset = NSR.dataCubeInstance
     cube.add((dataset, RDF.type, QB.DataSet))
     cube.add((dataset, RDFS.label, Literal("Population 2021", lang="en")))
-    cube.add(
-        (dataset, RDFS.label, Literal("Obyvatelé v okresech 2021", lang="cs"))
-    )
+    cube.add((dataset, RDFS.label, Literal("Obyvatelé v okresech 2021", lang="cs")))
     cube.add((dataset, QB.structure, structure))
 
     issued = datetime.date(2023, 3, 12)
@@ -126,8 +127,7 @@ def create_dataset(cube: Graph, structure: URIRef) -> URIRef:
     cube.add((dataset, DCTERMS.issued, Literal(issued, datatype=XSD.date)))
     cube.add((dataset, DCTERMS.modified, Literal(curr_date, datatype=XSD.date)))
 
-    cube.add((dataset, DCTERMS.publisher, Literal(
-        "https://github.com/milan252525/")))
+    cube.add((dataset, DCTERMS.publisher, Literal("https://github.com/milan252525/")))
     cube.add(
         (
             dataset,
@@ -147,23 +147,25 @@ def create_resources(cube: Graph, data: pd.DataFrame, codelist: pd.DataFrame) ->
     for _, row in data.iterrows():
         code = translate_county_code_name(row.vuzemi_kod, codelist)
         cube.add((NSR[code], RDF.type, NS.county))
-        cube.add((NSR[code], SKOS.prefLabel,
-                 Literal(row.vuzemi_txt, lang="cs")))
+        cube.add((NSR[code], SKOS.prefLabel, Literal(row.vuzemi_txt, lang="cs")))
 
     regions = load_care_providers()
     for _, row in regions[["KrajCode", "Kraj"]].drop_duplicates().dropna().iterrows():
         region = row["KrajCode"]
         cube.add((NSR[region], RDF.type, NS.region))
-        cube.add((NSR[region], SKOS.prefLabel,
-                 Literal(row["Kraj"], lang="cs")))
+        cube.add((NSR[region], SKOS.prefLabel, Literal(row["Kraj"], lang="cs")))
 
 
-def create_observations(cube: Graph, dataset: URIRef, data: pd.DataFrame, codelist: pd.DataFrame) -> None:
+def create_observations(
+    cube: Graph, dataset: URIRef, data: pd.DataFrame, codelist: pd.DataFrame
+) -> None:
     regions = load_care_providers()
-    map = dict()
-    for _, row in regions[["KrajCode", "OkresCode"]].drop_duplicates().dropna().iterrows():
-        map[row["OkresCode"]] = row["KrajCode"]
-        
+    code_map = {}
+    for _, row in (
+        regions[["KrajCode", "OkresCode"]].drop_duplicates().dropna().iterrows()
+    ):
+        code_map[row["OkresCode"]] = row["KrajCode"]
+
     for index, row in data.iterrows():
         resource = NSR["observation-" + str(index).zfill(4)]
         cube.add((resource, RDF.type, QB.Observation))
@@ -172,10 +174,11 @@ def create_observations(cube: Graph, dataset: URIRef, data: pd.DataFrame, codeli
 
         county = translate_county_code_name(row.vuzemi_kod, codelist)
         cube.add((resource, NS.county, NSR[county]))
-        cube.add((resource, NS.region, NSR[map[county]]))
+        cube.add((resource, NS.region, NSR[code_map[county]]))
 
-        cube.add((resource, NS.mean_population, Literal(
-            row.hodnota, datatype=XSD.integer)))
+        cube.add(
+            (resource, NS.mean_population, Literal(row.hodnota, datatype=XSD.integer))
+        )
 
 
 def get_cube():
@@ -187,16 +190,16 @@ def get_cube():
 
 
 def main():
-    print(f"Generating Population 2021 data cube")
+    print("Generating Population 2021 data cube")
     data = load_data()
     codelist = load_codelist()
     print(f"Dataset size: {len(data)}")
     cube = create_datacube(data, codelist)
     if not os.path.exists("out"):
         os.makedirs("out")
-    with open("out/population.ttl", "wb") as f:
-        cube.serialize(f, "ttl")
-        print(f"Generated data cube into {f.name}")
+    with open("out/population.ttl", "wb") as file:
+        cube.serialize(file, "ttl")
+        print(f"Generated data cube into {file.name}")
 
 
 if __name__ == "__main__":
