@@ -146,13 +146,11 @@ def translate_county_code_name(code: int, codelist: pd.DataFrame) -> str:
 def create_resources(cube: Graph, data: pd.DataFrame, codelist: pd.DataFrame) -> None:
     for _, row in data.iterrows():
         code = translate_county_code_name(row.vuzemi_kod, codelist)
-        cube.add((NSR[code], RDF.type, NS.county))
         cube.add((NSR[code], SKOS.prefLabel, Literal(row.vuzemi_txt, lang="cs")))
 
     regions = load_care_providers()
     for _, row in regions[["KrajCode", "Kraj"]].drop_duplicates().dropna().iterrows():
         region = row["KrajCode"]
-        cube.add((NSR[region], RDF.type, NS.region))
         cube.add((NSR[region], SKOS.prefLabel, Literal(row["Kraj"], lang="cs")))
 
 

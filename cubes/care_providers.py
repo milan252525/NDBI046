@@ -154,17 +154,14 @@ def serialize_to_string(obj: any) -> str:
 def create_resources(cube: Graph, data: pd.DataFrame) -> None:
     for _, row in data[[COUNTY, COUNTY_CODE]].drop_duplicates().dropna().iterrows():
         county = serialize_to_string(row[COUNTY_CODE])
-        cube.add((NSR[county], RDF.type, NS.county))
         cube.add((NSR[county], SKOS.prefLabel, Literal(str(row[COUNTY]), lang="cs")))
 
     for _, row in data[[REGION, REGION_CODE]].drop_duplicates().dropna().iterrows():
         region = serialize_to_string(row[REGION_CODE])
-        cube.add((NSR[region], RDF.type, NS.region))
         cube.add((NSR[region], SKOS.prefLabel, Literal(str(row[REGION]), lang="cs")))
 
     for _, row in data[[FIELD_OF_CARE]].drop_duplicates().dropna().iterrows():
         field = serialize_to_string(row[FIELD_OF_CARE])
-        cube.add((NSR[field], RDF.type, NS.field_of_care))
         cube.add(
             (NSR[field], SKOS.prefLabel, Literal(str(row[FIELD_OF_CARE]), lang="cs"))
         )
