@@ -49,7 +49,7 @@ def add_dimensions(cube: Graph) -> list[URIRef]:
         (RDF.type, QB.DimensionProperty),
         (RDFS.label, Literal("Okres", lang="cs")),
         (RDFS.label, Literal("County", lang="en")),
-        (RDFS.range, XSD.string),
+        (RDFS.range, XSD.anyURI),
         (RDFS.subPropertyOf, SDMX_DIM.refArea),
         (QB.concept, SDMX_CON.refArea),
     ]
@@ -62,7 +62,7 @@ def add_dimensions(cube: Graph) -> list[URIRef]:
         (RDF.type, QB.DimensionProperty),
         (RDFS.label, Literal("Kraj", lang="cs")),
         (RDFS.label, Literal("Region", lang="en")),
-        (RDFS.range, XSD.string),
+        (RDFS.range, XSD.anyURI),
         (RDFS.subPropertyOf, SDMX_DIM.refArea),
         (QB.concept, SDMX_CON.refArea),
     ]
@@ -75,7 +75,7 @@ def add_dimensions(cube: Graph) -> list[URIRef]:
         (RDF.type, QB.DimensionProperty),
         (RDFS.label, Literal("Obor péče", lang="cs")),
         (RDFS.label, Literal("Field of care", lang="en")),
-        (RDFS.range, XSD.string),
+        (RDFS.range, XSD.anyURI),
         (RDFS.subPropertyOf, SDMX_DIM.coverageSector),
         (QB.concept, SDMX_CON.coverageSector),
     ]
