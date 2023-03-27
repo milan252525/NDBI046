@@ -49,8 +49,7 @@ Python 3.10+
 
 # Task 2
 ## System requirements
-Python 3.10+ (tested on 3.10.5)
-Linux/WSL
+Python 3.10+ (tested on 3.10.5), Linux/WSL
 
 ## Installation instructions
 1. Create a virtual environment and activate it 
@@ -58,7 +57,7 @@ Linux/WSL
 2. Install Apache Airflow using pip, following the official [instructions](https://airflow.apache.org/docs/apache-airflow/stable/start.html), or use Docker as an alternative.
 3. Install required libraries (`pip install -r requirements.txt`)
 4. Copy the content of the `airflow/dags` directory into your DAGs folder. Check `dags_folder` in `airflow.cfg`. (`cp -r airflow/dags/* <dags_folder>`)
-5. Run the `data-cubes` DAG in Apache Airflow. You can specify ouput directory using the "DAG with Config" option in Airflow. The format is `{"output_path": "./out"}`.
+5. Run the `data-cubes` DAG in Apache Airflow web interface. You can specify ouput directory using the "DAG with Config" option in Airflow. The format is `{"output_path": "./out"}`.
 
 ## Information
 The structure of data cubes is identical to the previous task. 
