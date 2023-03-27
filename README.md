@@ -1,6 +1,7 @@
 # NDBI046 Introduction to Data Engineering
 https://skoda.projekty.ms.mff.cuni.cz/ndbi046/
 
+# Task 1
 ## System requirements
 Python 3.10+
 
@@ -45,3 +46,20 @@ Python 3.10+
   - `True` = Data cube violates corresponsing constraint
   - `False` = Data cube does not break this constraint
   - Ideally, all checks should return `False`
+
+# Task 2
+## System requirements
+Python 3.10+ (tested on 3.10.5)
+Linux/WSL
+
+## Installation instructions
+1. Create a virtual environment and activate it 
+(`python -m virtualenv venv`, `source venv/bin/activate`)
+2. Install Apache Airflow using pip, following the official [instructions](https://airflow.apache.org/docs/apache-airflow/stable/start.html), or use Docker as an alternative.
+3. Install required libraries (`pip install -r requirements.txt`)
+4. Copy the content of the `airflow/dags` directory into your DAGs folder. Check `dags_folder` in `airflow.cfg`. (`cp -r airflow/dags/* <dags_folder>`)
+5. Run the `data-cubes` DAG in Apache Airflow. You can specify ouput directory using the "DAG with Config" option in Airflow. The format is `{"output_path": "./out"}`.
+
+## Information
+The structure of data cubes is identical to the previous task. 
+However, the transformation workflow has been improved. And any incomplete values have been dropped, so there might be some minor differences compared to the previous cubes.
