@@ -1,7 +1,6 @@
 from datetime import datetime
 
 from airflow import DAG
-from airflow.decorators import task
 from airflow.operators.python import PythonOperator
 from airflow.utils.trigger_rule import TriggerRule
 
@@ -100,7 +99,7 @@ with DAG(
     clean = PythonOperator(
         task_id="cleanup", python_callable=cleanup, trigger_rule=TriggerRule.ALL_DONE
     )
-    clean.doc_md = "Cleanup of temporary files."
+    clean.doc = "Cleanup of temporary files."
 
     d_pop >> clean_pop
     d_cp >> clean_cp >> create_cp

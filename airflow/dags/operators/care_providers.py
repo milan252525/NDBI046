@@ -185,8 +185,8 @@ def _create_observations(cube: Graph, dataset: URIRef, data: pd.DataFrame) -> No
         )
 
 
-def create_care_providers_datacube(file: str, **kwargs):
-    data = pd.read_csv(file)
+def create_care_providers_datacube(data_file: str, **kwargs):
+    data = pd.read_csv(data_file)
 
     cube = _create_datacube(data)
 
@@ -196,4 +196,4 @@ def create_care_providers_datacube(file: str, **kwargs):
 
     file_path = os.path.join(output_path, "health_care.ttl")
     with open(file_path, "wb") as file:
-        cube.serialize(file_path, "ttl")
+        cube.serialize(file, "ttl")

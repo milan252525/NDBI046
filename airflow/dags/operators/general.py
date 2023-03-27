@@ -14,7 +14,7 @@ def download_file(url: str, name: str):
         file.write(response.content)
 
 
-def cleanup(**kwargs):
+def cleanup():
     shutil.rmtree("./tmp")
 
 

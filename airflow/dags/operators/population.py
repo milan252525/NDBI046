@@ -165,8 +165,8 @@ def _create_datacube(data: pd.DataFrame, enum_data: pd.DataFrame) -> Graph:
     return cube
 
 
-def create_population_datacube(file: str, enum_data: str, **kwargs):
-    data = pd.read_csv(file)
+def create_population_datacube(data_file: str, enum_data: str, **kwargs):
+    data = pd.read_csv(data_file)
     enum_data = pd.read_csv(enum_data)
 
     cube = _create_datacube(data, enum_data)
@@ -177,4 +177,4 @@ def create_population_datacube(file: str, enum_data: str, **kwargs):
 
     file_path = os.path.join(output_path, "population.ttl")
     with open(file_path, "wb") as file:
-        cube.serialize(file_path, "ttl")
+        cube.serialize(file, "ttl")
