@@ -59,6 +59,15 @@ Python 3.10+ (tested on 3.10.5), Linux/WSL
 4. Copy the content of the `airflow/dags` directory into your DAGs folder. Check `dags_folder` in `airflow.cfg`. (`cp -r airflow/dags/* <dags_folder>`)
 5. Run the `data-cubes` DAG in Apache Airflow web interface. You can specify ouput directory using the "DAG with Config" option in Airflow. The format is `{"output_path": "./out"}`.
 
-## Information
+## Info
 The structure of data cubes is identical to the previous task. 
 However, the transformation workflow has been improved. And any incomplete values have been dropped, so there might be some minor differences compared to the previous cubes.
+
+# Task 3
+System requirements and installation instructions are the same as for Task 1
+
+Run `python provenance.py` to generate provenance file as  `out/provenance.trig`
+
+## Info
+Resource names for each cube has been changed in task 1 code, so each has it's own unique one.
+`NSR.dataCubeInstance -> NSR.careProvidersDataCubeInstance, NSR.populationDataCubeInstance`
