@@ -116,7 +116,7 @@ def create_structure(
 
 
 def create_dataset(cube: Graph, structure: URIRef) -> URIRef:
-    dataset = NSR.dataCubeInstance
+    dataset = NSR.populationDataCubeInstance
     cube.add((dataset, RDF.type, QB.DataSet))
     cube.add((dataset, RDFS.label, Literal("Population 2021", lang="en")))
     cube.add((dataset, RDFS.label, Literal("Obyvatelé v okresech 2021", lang="cs")))

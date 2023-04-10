@@ -122,7 +122,7 @@ def create_structure(
 
 
 def create_dataset(cube: Graph, structure: URIRef) -> URIRef:
-    dataset = NSR.dataCubeInstance
+    dataset = NSR.careProvidersDataCubeInstance
     cube.add((dataset, RDF.type, QB.DataSet))
     cube.add((dataset, RDFS.label, Literal("Care providers", lang="en")))
     cube.add(
