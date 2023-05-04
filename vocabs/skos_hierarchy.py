@@ -1,8 +1,8 @@
 import os
 
 import pandas as pd
-from rdflib import BNode, Graph, Literal, Namespace, URIRef
-from rdflib.namespace import SKOS, RDF
+from rdflib import Graph, Literal, Namespace, URIRef
+from rdflib.namespace import RDF, SKOS
 
 NS = Namespace("https://milan252525.github.io/ontology#")
 NSR = Namespace("https://milan252525.github.io/resources/")
@@ -18,12 +18,14 @@ def clean_care_providers(care_providers: pd.DataFrame) -> pd.DataFrame:
 def create_hierarchy(graph: Graph) -> Graph:
     region = NS.region
     county = NS.county
-    
+
     eurovoc_regauth = URIRef("http://eurovoc.europa.eu/6034")
-    
+
     graph.add((eurovoc_regauth, RDF.type, SKOS.ConceptScheme))
-    graph.add((eurovoc_regauth, SKOS.prefLabel, Literal("správní celek", lang="cs")))
-    graph.add((eurovoc_regauth, SKOS.prefLabel, Literal("regional and local authorities", lang="en")))
+    graph.add((eurovoc_regauth, SKOS.prefLabel,
+              Literal("správní celek", lang="cs")))
+    graph.add((eurovoc_regauth, SKOS.prefLabel, Literal(
+        "regional and local authorities", lang="en")))
     graph.add((eurovoc_regauth, SKOS.hasTopConcept, region))
     graph.add((eurovoc_regauth, SKOS.hasTopConcept, county))
     graph.add((eurovoc_regauth, SKOS.notation, Literal("6034")))
@@ -51,41 +53,19 @@ def add_resources(data: pd.DataFrame, graph: Graph) -> Graph:
         .dropna()
         .iterrows()
     ):
-        graph.add(
-            (
-                NSR[row["OkresCode"]],
-                RDF.type,
-                SKOS.Concept,
-            )
-        )
-        graph.add(
-            (
-                NSR[row["OkresCode"]],
-                SKOS.prefLabel,
-                Literal(str(row["Okres"]), lang="cs"),
-            )
-        )
-        graph.add(
-            (
-                NSR[row["OkresCode"]],
-                SKOS.notation,
-                Literal(str(row["OkresCode"])),
-            )
-        )
+        graph.add((NSR[row["OkresCode"]], RDF.type, SKOS.Concept))
+        graph.add((NSR[row["OkresCode"]], SKOS.prefLabel,
+                  Literal(str(row["Okres"]), lang="cs")))
+        graph.add((NSR[row["OkresCode"]], SKOS.notation,
+                  Literal(str(row["OkresCode"]))))
         graph.add((region, SKOS.hasTopConcept, NSR[row["OkresCode"]]))
         graph.add((NSR[row["OkresCode"]], SKOS.inScheme, region))
 
-        graph.add(
-            (
-                NSR[row["KrajCode"]],
-                RDF.type,
-                SKOS.Concept,
-            )
-        )
-        graph.add(
-            (NSR[row["KrajCode"]], SKOS.prefLabel, Literal(str(row["Kraj"]), lang="cs"))
-        )
-        graph.add((NSR[row["KrajCode"]], SKOS.notation, Literal(str(row["KrajCode"]))))
+        graph.add((NSR[row["KrajCode"]], RDF.type, SKOS.Concept))
+        graph.add((NSR[row["KrajCode"]], SKOS.prefLabel,
+                  Literal(str(row["Kraj"]), lang="cs")))
+        graph.add((NSR[row["KrajCode"]], SKOS.notation,
+                  Literal(str(row["KrajCode"]))))
         graph.add((county, SKOS.hasTopConcept, NSR[row["KrajCode"]]))
         graph.add((NSR[row["KrajCode"]], SKOS.inScheme, county))
 

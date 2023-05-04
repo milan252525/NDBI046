@@ -64,10 +64,19 @@ The structure of data cubes is identical to the previous task.
 However, the transformation workflow has been improved. And any incomplete values have been dropped, so there might be some minor differences compared to the previous cubes.
 
 # Task 3
-System requirements and installation instructions are the same as for Task 1
+System requirements and installation instructions are the same as for Task 1.
 
-Run `python provenance.py` to generate provenance file as  `out/provenance.trig`
+Run `python provenance.py` to generate provenance file as  `out/provenance.trig`.
 
 ## Info
 Resource names for each cube has been changed in task 1 code, so each has it's own unique one.
 `NSR.dataCubeInstance -> NSR.careProvidersDataCubeInstance, NSR.populationDataCubeInstance`
+
+# Task 4
+System requirements and installation instructions are the same as for Task 1.
+
+Run `python vocabs/skos_hierarchy.py` to generate SKOS hierarchy in  `out/skos_hierarchy.ttl`.
+Run `python vocabs/dcat_dataset.py` to generate DCAT dataset for population datacube in  `out/dcat_dataset.ttl`.
+
+## Info
+I have decided to create a separate script to create SKOS hierarchy instead of adding it to cubes for improved readability.
