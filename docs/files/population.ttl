@@ -1,0 +1,680 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://milan252525.github.io/ontology#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://milan252525.github.io/resources/CZ010> skos:prefLabel "Hlavní město Praha"@cs .
+
+<https://milan252525.github.io/resources/observation-45921> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0427> ;
+    ns1:mean_population 116930 ;
+    ns1:region <https://milan252525.github.io/resources/CZ042> .
+
+<https://milan252525.github.io/resources/observation-45973> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0524> ;
+    ns1:mean_population 78479 ;
+    ns1:region <https://milan252525.github.io/resources/CZ052> .
+
+<https://milan252525.github.io/resources/observation-46108> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0514> ;
+    ns1:mean_population 71593 ;
+    ns1:region <https://milan252525.github.io/resources/CZ051> .
+
+<https://milan252525.github.io/resources/observation-46109> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0522> ;
+    ns1:mean_population 78763 ;
+    ns1:region <https://milan252525.github.io/resources/CZ052> .
+
+<https://milan252525.github.io/resources/observation-46165> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0531> ;
+    ns1:mean_population 103657 ;
+    ns1:region <https://milan252525.github.io/resources/CZ053> .
+
+<https://milan252525.github.io/resources/observation-46603> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0642> ;
+    ns1:mean_population 378424 ;
+    ns1:region <https://milan252525.github.io/resources/CZ064> .
+
+<https://milan252525.github.io/resources/observation-46651> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0644> ;
+    ns1:mean_population 114758 ;
+    ns1:region <https://milan252525.github.io/resources/CZ064> .
+
+<https://milan252525.github.io/resources/observation-46980> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0208> ;
+    ns1:mean_population 100584 ;
+    ns1:region <https://milan252525.github.io/resources/CZ020> .
+
+<https://milan252525.github.io/resources/observation-47115> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0646> ;
+    ns1:mean_population 91984 ;
+    ns1:region <https://milan252525.github.io/resources/CZ064> .
+
+<https://milan252525.github.io/resources/observation-47171> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0713> ;
+    ns1:mean_population 107697 ;
+    ns1:region <https://milan252525.github.io/resources/CZ071> .
+
+<https://milan252525.github.io/resources/observation-47172> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0714> ;
+    ns1:mean_population 126826 ;
+    ns1:region <https://milan252525.github.io/resources/CZ071> .
+
+<https://milan252525.github.io/resources/observation-47221> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0322> ;
+    ns1:mean_population 84661 ;
+    ns1:region <https://milan252525.github.io/resources/CZ032> .
+
+<https://milan252525.github.io/resources/observation-47222> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0326> ;
+    ns1:mean_population 48587 ;
+    ns1:region <https://milan252525.github.io/resources/CZ032> .
+
+<https://milan252525.github.io/resources/observation-47224> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0411> ;
+    ns1:mean_population 88030 ;
+    ns1:region <https://milan252525.github.io/resources/CZ041> .
+
+<https://milan252525.github.io/resources/observation-47296> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0723> ;
+    ns1:mean_population 140392 ;
+    ns1:region <https://milan252525.github.io/resources/CZ072> .
+
+<https://milan252525.github.io/resources/observation-47297> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0724> ;
+    ns1:mean_population 188947 ;
+    ns1:region <https://milan252525.github.io/resources/CZ072> .
+
+<https://milan252525.github.io/resources/observation-47459> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0206> ;
+    ns1:mean_population 108889 ;
+    ns1:region <https://milan252525.github.io/resources/CZ020> .
+
+<https://milan252525.github.io/resources/observation-47460> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0209> ;
+    ns1:mean_population 186558 ;
+    ns1:region <https://milan252525.github.io/resources/CZ020> .
+
+<https://milan252525.github.io/resources/observation-47511> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ020C> ;
+    ns1:mean_population 54767 ;
+    ns1:region <https://milan252525.github.io/resources/CZ020> .
+
+<https://milan252525.github.io/resources/observation-47512> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0314> ;
+    ns1:mean_population 70582 ;
+    ns1:region <https://milan252525.github.io/resources/CZ031> .
+
+<https://milan252525.github.io/resources/observation-47513> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0323> ;
+    ns1:mean_population 187985 ;
+    ns1:region <https://milan252525.github.io/resources/CZ032> .
+
+<https://milan252525.github.io/resources/observation-47553> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0421> ;
+    ns1:mean_population 126492 ;
+    ns1:region <https://milan252525.github.io/resources/CZ042> .
+
+<https://milan252525.github.io/resources/observation-47760> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0521> ;
+    ns1:mean_population 162193 ;
+    ns1:region <https://milan252525.github.io/resources/CZ052> .
+
+<https://milan252525.github.io/resources/observation-47840> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0802> ;
+    ns1:mean_population 212422 ;
+    ns1:region <https://milan252525.github.io/resources/CZ080> .
+
+<https://milan252525.github.io/resources/observation-48010> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0312> ;
+    ns1:mean_population 60033 ;
+    ns1:region <https://milan252525.github.io/resources/CZ031> .
+
+<https://milan252525.github.io/resources/observation-48059> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0325> ;
+    ns1:mean_population 80228 ;
+    ns1:region <https://milan252525.github.io/resources/CZ032> .
+
+<https://milan252525.github.io/resources/observation-48109> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0202> ;
+    ns1:mean_population 95823 ;
+    ns1:region <https://milan252525.github.io/resources/CZ020> .
+
+<https://milan252525.github.io/resources/observation-48110> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0207> ;
+    ns1:mean_population 127221 ;
+    ns1:region <https://milan252525.github.io/resources/CZ020> .
+
+<https://milan252525.github.io/resources/observation-48886> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0711> ;
+    ns1:mean_population 36884 ;
+    ns1:region <https://milan252525.github.io/resources/CZ071> .
+
+<https://milan252525.github.io/resources/observation-49167> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0205> ;
+    ns1:mean_population 75402 ;
+    ns1:region <https://milan252525.github.io/resources/CZ020> .
+
+<https://milan252525.github.io/resources/observation-49224> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0201> ;
+    ns1:mean_population 99008 ;
+    ns1:region <https://milan252525.github.io/resources/CZ020> .
+
+<https://milan252525.github.io/resources/observation-49225> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ020A> ;
+    ns1:mean_population 149990 ;
+    ns1:region <https://milan252525.github.io/resources/CZ020> .
+
+<https://milan252525.github.io/resources/observation-49226> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ020B> ;
+    ns1:mean_population 114060 ;
+    ns1:region <https://milan252525.github.io/resources/CZ020> .
+
+<https://milan252525.github.io/resources/observation-49227> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0311> ;
+    ns1:mean_population 194994 ;
+    ns1:region <https://milan252525.github.io/resources/CZ031> .
+
+<https://milan252525.github.io/resources/observation-49283> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0315> ;
+    ns1:mean_population 50225 ;
+    ns1:region <https://milan252525.github.io/resources/CZ031> .
+
+<https://milan252525.github.io/resources/observation-49516> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0801> ;
+    ns1:mean_population 89906 ;
+    ns1:region <https://milan252525.github.io/resources/CZ080> .
+
+<https://milan252525.github.io/resources/observation-49517> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0804> ;
+    ns1:mean_population 149907 ;
+    ns1:region <https://milan252525.github.io/resources/CZ080> .
+
+<https://milan252525.github.io/resources/observation-49579> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0806> ;
+    ns1:mean_population 312908 ;
+    ns1:region <https://milan252525.github.io/resources/CZ080> .
+
+<https://milan252525.github.io/resources/observation-49690> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0313> ;
+    ns1:mean_population 89325 ;
+    ns1:region <https://milan252525.github.io/resources/CZ031> .
+
+<https://milan252525.github.io/resources/observation-49833> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0321> ;
+    ns1:mean_population 54313 ;
+    ns1:region <https://milan252525.github.io/resources/CZ032> .
+
+<https://milan252525.github.io/resources/observation-49834> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0412> ;
+    ns1:mean_population 110195 ;
+    ns1:region <https://milan252525.github.io/resources/CZ041> .
+
+<https://milan252525.github.io/resources/observation-49903> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0324> ;
+    ns1:mean_population 68623 ;
+    ns1:region <https://milan252525.github.io/resources/CZ032> .
+
+<https://milan252525.github.io/resources/observation-50423> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0423> ;
+    ns1:mean_population 117473 ;
+    ns1:region <https://milan252525.github.io/resources/CZ042> .
+
+<https://milan252525.github.io/resources/observation-50424> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0426> ;
+    ns1:mean_population 124401 ;
+    ns1:region <https://milan252525.github.io/resources/CZ042> .
+
+<https://milan252525.github.io/resources/observation-50467> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0534> ;
+    ns1:mean_population 135977 ;
+    ns1:region <https://milan252525.github.io/resources/CZ053> .
+
+<https://milan252525.github.io/resources/observation-50521> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0511> ;
+    ns1:mean_population 101997 ;
+    ns1:region <https://milan252525.github.io/resources/CZ051> .
+
+<https://milan252525.github.io/resources/observation-50522> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0513> ;
+    ns1:mean_population 173337 ;
+    ns1:region <https://milan252525.github.io/resources/CZ051> .
+
+<https://milan252525.github.io/resources/observation-50596> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0523> ;
+    ns1:mean_population 108092 ;
+    ns1:region <https://milan252525.github.io/resources/CZ052> .
+
+<https://milan252525.github.io/resources/observation-50597> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0525> ;
+    ns1:mean_population 115365 ;
+    ns1:region <https://milan252525.github.io/resources/CZ052> .
+
+<https://milan252525.github.io/resources/observation-50666> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0647> ;
+    ns1:mean_population 113389 ;
+    ns1:region <https://milan252525.github.io/resources/CZ064> .
+
+<https://milan252525.github.io/resources/observation-51064> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0631> ;
+    ns1:mean_population 93521 ;
+    ns1:region <https://milan252525.github.io/resources/CZ063> .
+
+<https://milan252525.github.io/resources/observation-51112> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0532> ;
+    ns1:mean_population 171461 ;
+    ns1:region <https://milan252525.github.io/resources/CZ053> .
+
+<https://milan252525.github.io/resources/observation-51113> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0634> ;
+    ns1:mean_population 109373 ;
+    ns1:region <https://milan252525.github.io/resources/CZ063> .
+
+<https://milan252525.github.io/resources/observation-51166> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0715> ;
+    ns1:mean_population 118618 ;
+    ns1:region <https://milan252525.github.io/resources/CZ071> .
+
+<https://milan252525.github.io/resources/observation-51332> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0204> ;
+    ns1:mean_population 103345 ;
+    ns1:region <https://milan252525.github.io/resources/CZ020> .
+
+<https://milan252525.github.io/resources/observation-51458> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0633> ;
+    ns1:mean_population 71457 ;
+    ns1:region <https://milan252525.github.io/resources/CZ063> .
+
+<https://milan252525.github.io/resources/observation-51459> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0635> ;
+    ns1:mean_population 117181 ;
+    ns1:region <https://milan252525.github.io/resources/CZ063> .
+
+<https://milan252525.github.io/resources/observation-51461> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0641> ;
+    ns1:mean_population 107795 ;
+    ns1:region <https://milan252525.github.io/resources/CZ064> .
+
+<https://milan252525.github.io/resources/observation-51462> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0645> ;
+    ns1:mean_population 151344 ;
+    ns1:region <https://milan252525.github.io/resources/CZ064> .
+
+<https://milan252525.github.io/resources/observation-51503> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0533> ;
+    ns1:mean_population 102799 ;
+    ns1:region <https://milan252525.github.io/resources/CZ053> .
+
+<https://milan252525.github.io/resources/observation-51704> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0632> ;
+    ns1:mean_population 112206 ;
+    ns1:region <https://milan252525.github.io/resources/CZ063> .
+
+<https://milan252525.github.io/resources/observation-51705> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0643> ;
+    ns1:mean_population 224794 ;
+    ns1:region <https://milan252525.github.io/resources/CZ064> .
+
+<https://milan252525.github.io/resources/observation-51733> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0722> ;
+    ns1:mean_population 139922 ;
+    ns1:region <https://milan252525.github.io/resources/CZ072> .
+
+<https://milan252525.github.io/resources/observation-51734> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0803> ;
+    ns1:mean_population 241184 ;
+    ns1:region <https://milan252525.github.io/resources/CZ080> .
+
+<https://milan252525.github.io/resources/observation-51800> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0316> ;
+    ns1:mean_population 69794 ;
+    ns1:region <https://milan252525.github.io/resources/CZ031> .
+
+<https://milan252525.github.io/resources/observation-51856> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0712> ;
+    ns1:mean_population 233661 ;
+    ns1:region <https://milan252525.github.io/resources/CZ071> .
+
+<https://milan252525.github.io/resources/observation-51858> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0721> ;
+    ns1:mean_population 103753 ;
+    ns1:region <https://milan252525.github.io/resources/CZ072> .
+
+<https://milan252525.github.io/resources/observation-51909> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0805> ;
+    ns1:mean_population 173853 ;
+    ns1:region <https://milan252525.github.io/resources/CZ080> .
+
+<https://milan252525.github.io/resources/observation-52034> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0203> ;
+    ns1:mean_population 164359 ;
+    ns1:region <https://milan252525.github.io/resources/CZ020> .
+
+<https://milan252525.github.io/resources/observation-52054> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0413> ;
+    ns1:mean_population 85452 ;
+    ns1:region <https://milan252525.github.io/resources/CZ041> .
+
+<https://milan252525.github.io/resources/observation-52055> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0422> ;
+    ns1:mean_population 121643 ;
+    ns1:region <https://milan252525.github.io/resources/CZ042> .
+
+<https://milan252525.github.io/resources/observation-52056> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0425> ;
+    ns1:mean_population 107090 ;
+    ns1:region <https://milan252525.github.io/resources/CZ042> .
+
+<https://milan252525.github.io/resources/observation-52166> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0317> ;
+    ns1:mean_population 101333 ;
+    ns1:region <https://milan252525.github.io/resources/CZ031> .
+
+<https://milan252525.github.io/resources/observation-52240> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0512> ;
+    ns1:mean_population 90204 ;
+    ns1:region <https://milan252525.github.io/resources/CZ051> .
+
+<https://milan252525.github.io/resources/observation-52340> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0327> ;
+    ns1:mean_population 52793 ;
+    ns1:region <https://milan252525.github.io/resources/CZ032> .
+
+<https://milan252525.github.io/resources/observation-52403> a qb:Observation ;
+    qb:dataSet <https://milan252525.github.io/resources/populationDataCubeInstance> ;
+    ns1:county <https://milan252525.github.io/resources/CZ0424> ;
+    ns1:mean_population 85466 ;
+    ns1:region <https://milan252525.github.io/resources/CZ042> .
+
+ns1:county a qb:DimensionProperty,
+        rdfs:Property ;
+    rdfs:label "Okres"@cs,
+        "County"@en ;
+    qb:concept <http://purl.org/linked-data/sdmx/2009/concept#refArea> ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/dimension#refArea> .
+
+ns1:mean_population a qb:MeasureProperty,
+        rdfs:Property ;
+    rdfs:label "Střední stav obyvatel"@cs,
+        "Mean population"@en ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/measure#obsValue> .
+
+ns1:region a qb:DimensionProperty,
+        rdfs:Property ;
+    rdfs:label "Kraj"@cs,
+        "Region"@en ;
+    qb:concept <http://purl.org/linked-data/sdmx/2009/concept#refArea> ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf <http://purl.org/linked-data/sdmx/2009/dimension#refArea> .
+
+ns1:structure a qb:DataStructureDefinition ;
+    qb:component [ qb:dimension ns1:region ],
+        [ qb:measure ns1:mean_population ],
+        [ qb:dimension ns1:county ] .
+
+<https://milan252525.github.io/resources/CZ0201> skos:prefLabel "Benešov"@cs .
+
+<https://milan252525.github.io/resources/CZ0202> skos:prefLabel "Beroun"@cs .
+
+<https://milan252525.github.io/resources/CZ0203> skos:prefLabel "Kladno"@cs .
+
+<https://milan252525.github.io/resources/CZ0204> skos:prefLabel "Kolín"@cs .
+
+<https://milan252525.github.io/resources/CZ0205> skos:prefLabel "Kutná Hora"@cs .
+
+<https://milan252525.github.io/resources/CZ0206> skos:prefLabel "Mělník"@cs .
+
+<https://milan252525.github.io/resources/CZ0207> skos:prefLabel "Mladá Boleslav"@cs .
+
+<https://milan252525.github.io/resources/CZ0208> skos:prefLabel "Nymburk"@cs .
+
+<https://milan252525.github.io/resources/CZ0209> skos:prefLabel "Praha-východ"@cs .
+
+<https://milan252525.github.io/resources/CZ020A> skos:prefLabel "Praha-západ"@cs .
+
+<https://milan252525.github.io/resources/CZ020B> skos:prefLabel "Příbram"@cs .
+
+<https://milan252525.github.io/resources/CZ020C> skos:prefLabel "Rakovník"@cs .
+
+<https://milan252525.github.io/resources/CZ0311> skos:prefLabel "České Budějovice"@cs .
+
+<https://milan252525.github.io/resources/CZ0312> skos:prefLabel "Český Krumlov"@cs .
+
+<https://milan252525.github.io/resources/CZ0313> skos:prefLabel "Jindřichův Hradec"@cs .
+
+<https://milan252525.github.io/resources/CZ0314> skos:prefLabel "Písek"@cs .
+
+<https://milan252525.github.io/resources/CZ0315> skos:prefLabel "Prachatice"@cs .
+
+<https://milan252525.github.io/resources/CZ0316> skos:prefLabel "Strakonice"@cs .
+
+<https://milan252525.github.io/resources/CZ0317> skos:prefLabel "Tábor"@cs .
+
+<https://milan252525.github.io/resources/CZ0321> skos:prefLabel "Domažlice"@cs .
+
+<https://milan252525.github.io/resources/CZ0322> skos:prefLabel "Klatovy"@cs .
+
+<https://milan252525.github.io/resources/CZ0323> skos:prefLabel "Plzeň-město"@cs .
+
+<https://milan252525.github.io/resources/CZ0324> skos:prefLabel "Plzeň-jih"@cs .
+
+<https://milan252525.github.io/resources/CZ0325> skos:prefLabel "Plzeň-sever"@cs .
+
+<https://milan252525.github.io/resources/CZ0326> skos:prefLabel "Rokycany"@cs .
+
+<https://milan252525.github.io/resources/CZ0327> skos:prefLabel "Tachov"@cs .
+
+<https://milan252525.github.io/resources/CZ0411> skos:prefLabel "Cheb"@cs .
+
+<https://milan252525.github.io/resources/CZ0412> skos:prefLabel "Karlovy Vary"@cs .
+
+<https://milan252525.github.io/resources/CZ0413> skos:prefLabel "Sokolov"@cs .
+
+<https://milan252525.github.io/resources/CZ0421> skos:prefLabel "Děčín"@cs .
+
+<https://milan252525.github.io/resources/CZ0422> skos:prefLabel "Chomutov"@cs .
+
+<https://milan252525.github.io/resources/CZ0423> skos:prefLabel "Litoměřice"@cs .
+
+<https://milan252525.github.io/resources/CZ0424> skos:prefLabel "Louny"@cs .
+
+<https://milan252525.github.io/resources/CZ0425> skos:prefLabel "Most"@cs .
+
+<https://milan252525.github.io/resources/CZ0426> skos:prefLabel "Teplice"@cs .
+
+<https://milan252525.github.io/resources/CZ0427> skos:prefLabel "Ústí nad Labem"@cs .
+
+<https://milan252525.github.io/resources/CZ0511> skos:prefLabel "Česká Lípa"@cs .
+
+<https://milan252525.github.io/resources/CZ0512> skos:prefLabel "Jablonec nad Nisou"@cs .
+
+<https://milan252525.github.io/resources/CZ0513> skos:prefLabel "Liberec"@cs .
+
+<https://milan252525.github.io/resources/CZ0514> skos:prefLabel "Semily"@cs .
+
+<https://milan252525.github.io/resources/CZ0521> skos:prefLabel "Hradec Králové"@cs .
+
+<https://milan252525.github.io/resources/CZ0522> skos:prefLabel "Jičín"@cs .
+
+<https://milan252525.github.io/resources/CZ0523> skos:prefLabel "Náchod"@cs .
+
+<https://milan252525.github.io/resources/CZ0524> skos:prefLabel "Rychnov nad Kněžnou"@cs .
+
+<https://milan252525.github.io/resources/CZ0525> skos:prefLabel "Trutnov"@cs .
+
+<https://milan252525.github.io/resources/CZ0531> skos:prefLabel "Chrudim"@cs .
+
+<https://milan252525.github.io/resources/CZ0532> skos:prefLabel "Pardubice"@cs .
+
+<https://milan252525.github.io/resources/CZ0533> skos:prefLabel "Svitavy"@cs .
+
+<https://milan252525.github.io/resources/CZ0534> skos:prefLabel "Ústí nad Orlicí"@cs .
+
+<https://milan252525.github.io/resources/CZ0631> skos:prefLabel "Havlíčkův Brod"@cs .
+
+<https://milan252525.github.io/resources/CZ0632> skos:prefLabel "Jihlava"@cs .
+
+<https://milan252525.github.io/resources/CZ0633> skos:prefLabel "Pelhřimov"@cs .
+
+<https://milan252525.github.io/resources/CZ0634> skos:prefLabel "Třebíč"@cs .
+
+<https://milan252525.github.io/resources/CZ0635> skos:prefLabel "Žďár nad Sázavou"@cs .
+
+<https://milan252525.github.io/resources/CZ0641> skos:prefLabel "Blansko"@cs .
+
+<https://milan252525.github.io/resources/CZ0642> skos:prefLabel "Brno-město"@cs .
+
+<https://milan252525.github.io/resources/CZ0643> skos:prefLabel "Brno-venkov"@cs .
+
+<https://milan252525.github.io/resources/CZ0644> skos:prefLabel "Břeclav"@cs .
+
+<https://milan252525.github.io/resources/CZ0645> skos:prefLabel "Hodonín"@cs .
+
+<https://milan252525.github.io/resources/CZ0646> skos:prefLabel "Vyškov"@cs .
+
+<https://milan252525.github.io/resources/CZ0647> skos:prefLabel "Znojmo"@cs .
+
+<https://milan252525.github.io/resources/CZ0711> skos:prefLabel "Jeseník"@cs .
+
+<https://milan252525.github.io/resources/CZ0712> skos:prefLabel "Olomouc"@cs .
+
+<https://milan252525.github.io/resources/CZ0713> skos:prefLabel "Prostějov"@cs .
+
+<https://milan252525.github.io/resources/CZ0714> skos:prefLabel "Přerov"@cs .
+
+<https://milan252525.github.io/resources/CZ0715> skos:prefLabel "Šumperk"@cs .
+
+<https://milan252525.github.io/resources/CZ0721> skos:prefLabel "Kroměříž"@cs .
+
+<https://milan252525.github.io/resources/CZ0722> skos:prefLabel "Uherské Hradiště"@cs .
+
+<https://milan252525.github.io/resources/CZ0723> skos:prefLabel "Vsetín"@cs .
+
+<https://milan252525.github.io/resources/CZ0724> skos:prefLabel "Zlín"@cs .
+
+<https://milan252525.github.io/resources/CZ0801> skos:prefLabel "Bruntál"@cs .
+
+<https://milan252525.github.io/resources/CZ0802> skos:prefLabel "Frýdek-Místek"@cs .
+
+<https://milan252525.github.io/resources/CZ0803> skos:prefLabel "Karviná"@cs .
+
+<https://milan252525.github.io/resources/CZ0804> skos:prefLabel "Nový Jičín"@cs .
+
+<https://milan252525.github.io/resources/CZ0805> skos:prefLabel "Opava"@cs .
+
+<https://milan252525.github.io/resources/CZ0806> skos:prefLabel "Ostrava-město"@cs .
+
+<https://milan252525.github.io/resources/CZ041> skos:prefLabel "Karlovarský kraj"@cs .
+
+<https://milan252525.github.io/resources/CZ051> skos:prefLabel "Liberecký kraj"@cs .
+
+<https://milan252525.github.io/resources/CZ053> skos:prefLabel "Pardubický kraj"@cs .
+
+<https://milan252525.github.io/resources/CZ072> skos:prefLabel "Zlínský kraj"@cs .
+
+<https://milan252525.github.io/resources/CZ052> skos:prefLabel "Královéhradecký kraj"@cs .
+
+<https://milan252525.github.io/resources/CZ063> skos:prefLabel "Kraj Vysočina"@cs .
+
+<https://milan252525.github.io/resources/CZ071> skos:prefLabel "Olomoucký kraj"@cs .
+
+<https://milan252525.github.io/resources/CZ080> skos:prefLabel "Moravskoslezský kraj"@cs .
+
+<https://milan252525.github.io/resources/CZ031> skos:prefLabel "Jihočeský kraj"@cs .
+
+<https://milan252525.github.io/resources/CZ032> skos:prefLabel "Plzeňský kraj"@cs .
+
+<https://milan252525.github.io/resources/CZ042> skos:prefLabel "Ústecký kraj"@cs .
+
+<https://milan252525.github.io/resources/CZ064> skos:prefLabel "Jihomoravský kraj"@cs .
+
+<https://milan252525.github.io/resources/CZ020> skos:prefLabel "Středočeský kraj"@cs .
+
+<https://milan252525.github.io/resources/populationDataCubeInstance> a qb:DataSet ;
+    rdfs:label "Obyvatelé v okresech 2021"@cs,
+        "Population 2021"@en ;
+    dcterms:issued "2023-03-12"^^xsd:date ;
+    dcterms:license "https://github.com/milan252525/NDBI046/blob/main/LICENSE" ;
+    dcterms:modified "2023-05-13"^^xsd:date ;
+    dcterms:publisher "https://github.com/milan252525/" ;
+    qb:structure ns1:structure .
+

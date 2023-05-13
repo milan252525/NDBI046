@@ -7,6 +7,7 @@ from rdflib.namespace import DCAT, DCTERMS, RDF, XSD, FOAF
 NS = Namespace("https://milan252525.github.io/ontology#")
 NSR = Namespace("https://milan252525.github.io/resources/")
 RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
+SPDX = Namespace("http://spdx.org/rdf/terms#")
 
 
 def generate_dataset(graph: Graph) -> Graph:
@@ -51,6 +52,14 @@ def generate_dataset(graph: Graph) -> Graph:
         "http://www.iana.org/assignments/media-types/text/turtle")))
     graph.add((distribution, DCTERMS.format, URIRef(
         "http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE")))
+
+    # checksum
+    checksum = BNode()
+    graph.add((distribution, SPDX.checksum, checksum))
+    graph.add((checksum, RDF.type, SPDX.Checksum))
+    graph.add((checksum, SPDX.algorithm, SPDX.checksumAlgorithm_sha256))
+    graph.add((checksum, SPDX.checksumValue, Literal(
+        "c9f66ebb61a01ec09a3573e64d81c69e16a864a6edddf788c7e8a006343537d8", datatype=XSD.hexBinary)))
 
     publisher = BNode()
     graph.add((cube, DCTERMS.publisher, publisher))
