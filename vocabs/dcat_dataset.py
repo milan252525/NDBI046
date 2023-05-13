@@ -45,9 +45,9 @@ def generate_dataset(graph: Graph) -> Graph:
 
     graph.add((distribution, RDF.type, DCAT.Distribution))
     graph.add((distribution, DCAT.accessURL, URIRef(
-        "https://github.com/milan252525/NDBI046")))
+        "https://milan252525.github.io/NDBI046")))
     graph.add((distribution, DCAT.downloadURL, URIRef(
-        "https://github.com/milan252525/NDBI046")))
+        "https://milan252525.github.io/NDBI046/files/population.ttl")))
     graph.add((distribution, DCAT.mediaType, URIRef(
         "http://www.iana.org/assignments/media-types/text/turtle")))
     graph.add((distribution, DCTERMS.format, URIRef(

@@ -1,0 +1,37 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <http://spdx.org/rdf/terms#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://milan252525.github.io/resources/populationDataCubeInstance> a dcat:Dataset ;
+    dcterms:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+    dcterms:creator _:N6f7036ff93b94dc086c64a5a7eff22b6 ;
+    dcterms:description "Datová kostka obsahující obyvatele podle krajů a okresů v roce 2021"@cs ;
+    dcterms:publisher _:N6f7036ff93b94dc086c64a5a7eff22b6 ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/atu/CZE> ;
+    dcterms:temporal [ a dcterms:PeriodOfTime ;
+            dcat:endDate "2021-12-31"^^xsd:date ;
+            dcat:startDate "2021-01-01"^^xsd:date ] ;
+    dcterms:title "Obyvatelé v okresech 2021"@cs,
+        "Population 2021"@en ;
+    dcat:distribution <https://milan252525.github.io/resources/CubeDistribution> ;
+    dcat:keyword "kraje"@cs,
+        "okresy"@cs,
+        "populace"@cs ;
+    dcat:theme <http://eurovoc.europa.eu/3300>,
+        <http://eurovoc.europa.eu/4259> .
+
+<https://milan252525.github.io/resources/CubeDistribution> a dcat:Distribution ;
+    dcterms:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+    ns1:checksum [ a ns1:Checksum ;
+            ns1:algorithm ns1:checksumAlgorithm_sha256 ;
+            ns1:checksumValue "c9f66ebb61a01ec09a3573e64d81c69e16a864a6edddf788c7e8a006343537d8"^^xsd:hexBinary ] ;
+    dcat:accessURL <https://milan252525.github.io/NDBI046> ;
+    dcat:downloadURL <https://milan252525.github.io/NDBI046/files/population.ttl> ;
+    dcat:mediaType <http://www.iana.org/assignments/media-types/text/turtle> .
+
+_:N6f7036ff93b94dc086c64a5a7eff22b6 a foaf:Person ;
+    foaf:firstName "Milan" ;
+    foaf:lastName "Abrahám" .
+
