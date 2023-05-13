@@ -80,3 +80,6 @@ Run `python vocabs/dcat_dataset.py` to generate DCAT dataset for population data
 
 ## Info
 I have decided to create a separate script to create SKOS hierarchy instead of adding it to cubes for improved readability.
+
+# Task 5
+https://milan252525.github.io/NDBI046
