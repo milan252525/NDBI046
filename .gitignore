@@ -1,6 +1,7 @@
 .vscode/
 out/*
 tmp/*
+private.key
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
